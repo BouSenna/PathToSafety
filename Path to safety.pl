@@ -23,3 +23,14 @@ prohibitable_move([X, Y]):-
 
 preferable_move([X, Y]):-
  star([X, Y]).
+
+
+find_path(Position, Position, Path, Path, Stars, Stars).
+
+find_path([X,Y], End, Visited, Path, CurrentStars, Stars):-
+   move([X, Y], New_Position),
+   \+ prohibitable_move(New_Position),
+   \+ member(New_Position, Visited),
+   (preferable_move(New_Position) -> CurrentStars1 is CurrentStars + 1 ;
+                                     CurrentStars1 is CurrentStars),
+   find_path(New_Position, End, [New_Position|Visited], Path, CurrentStars1, Stars).
