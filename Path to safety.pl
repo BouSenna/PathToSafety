@@ -60,11 +60,17 @@ find_path([X,Y], End, L, W, Visited, Path, CurrentStars, Stars):-
    find_path(New_Position, End, L, W, [New_Position|Visited], Path, CurrentStars1, Stars).
 
 
+find_direction([X], DIR, DIR).
+
+find_direction([X, Y|T], Directions, Moves):-
+   get_direction(X, Y, New_Dir),
+   find_direction([Y|T],[New_Dir|Directions], Moves).
+
 path_to_safety(Moves, Stars):-
    start(St),
    end(End),
    dim(L, W),
    Length is L - 1,
    Width is W - 1,
-   find_path(St, End, Length, Width, [St], Reversed_Moves, 0, Stars),
-   reverse_list(Reversed_Moves, Moves).
+   find_path(St, End, Length, Width, [St], Positions, 0, Stars), 
+   find_direction(Positions, [], Moves).
