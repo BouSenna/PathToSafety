@@ -34,3 +34,8 @@ find_path([X,Y], End, Visited, Path, CurrentStars, Stars):-
    (preferable_move(New_Position) -> CurrentStars1 is CurrentStars + 1 ;
                                      CurrentStars1 is CurrentStars),
    find_path(New_Position, End, [New_Position|Visited], Path, CurrentStars1, Stars).
+
+path_to_safety(Moves, Stars):-
+   start_Position(St),
+   end_Position(End),
+   find_path(St, End, [St], Reversed_Moves, 0, Stars).
