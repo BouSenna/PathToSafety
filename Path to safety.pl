@@ -24,6 +24,18 @@ prohibitable_move([X, Y]):-
 preferable_move([X, Y]):-
  star([X, Y]).
 
+% Comparing the positions to find out the direction
+get_direction([X1, Y1], [X2, Y2], Dir):-
+  X1 = X2,
+  R is Y1 - Y2,
+  (R > 0 -> Dir = right ;
+            Dir = left).
+
+get_direction([X1, Y1], [X2, Y2], Dir):-
+  Y1 = Y2,
+  R is X1 - X2,
+  (R > 0 -> Dir = down;
+            Dir = up).
 
 % Reverse a list
 reverse_list(L, R) :-  
