@@ -33,13 +33,16 @@ reverse_list([], Temp, Temp) :-
 reverse_list([H|T], R, Temp) :- 
   reverse_list(T, R, [H|Temp]). 
 
+is_member(Val, [Val|T]).
+is_member(Val, [H|T]):-
+  is_member(Val, T).
 
 find_path(Position, Position, _, _, Path, Path, Stars, Stars).
 
 find_path([X,Y], End, L, W, Visited, Path, CurrentStars, Stars):-
    move([X, Y], New_Position, L, W),
    \+ prohibitable_move(New_Position),
-   \+ member(New_Position, Visited),
+   \+ is_member(New_Position, Visited),
    (preferable_move(New_Position) -> CurrentStars1 is CurrentStars + 1 ;
                                      CurrentStars1 is CurrentStars),
    find_path(New_Position, End, L, W, [New_Position|Visited], Path, CurrentStars1, Stars).
