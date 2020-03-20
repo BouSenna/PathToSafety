@@ -42,13 +42,13 @@ find_path([X,Y], End, L, W, Visited, Path, CurrentStars, Stars):-
    \+ member(New_Position, Visited),
    (preferable_move(New_Position) -> CurrentStars1 is CurrentStars + 1 ;
                                      CurrentStars1 is CurrentStars),
-   find_path(New_Position, End, [New_Position|Visited], Path, CurrentStars1, Stars).
+   find_path(New_Position, End, L, W, [New_Position|Visited], Path, CurrentStars1, Stars).
 
 path_to_safety(Moves, Stars):-
    start_Position(St),
    end_Position(End),
    dim(L, W),
-   Length = L - 1,
-   Width = W - 1,
+   Length is L - 1,
+   Width is W - 1,
    find_path(St, End, Length, Width, [St], Reversed_Moves, 0, Stars),
    reverse_list(Reversed_Moves, Moves).
