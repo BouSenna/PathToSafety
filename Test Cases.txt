@@ -1,0 +1,92 @@
+/*
+*[Test Case-1]
+dim(4,4).
+start([1,0]).
+end([2,2]).
+
+bomb([0,1]).
+bomb([1,2]).
+bomb([2,0]).
+bomb([3,0]).
+
+star([2,1]).
+star([2,3]).
+star([3,2]).
+
+[Solution]
+Moves = [right, down, down, right, up],
+Stars = 2 
+OR
+Moves = [right, down, down, right, right, up, left],
+Stars = 3 
+OR
+Moves = [right, down, right],
+Stars = 1
+
+
+
+
+*[Test Case-2]:
+dim(5, 4).
+start([0,0]).
+end([4,3]).
+
+bomb([0,2]).
+bomb([0,3]).
+bomb([1,0]).
+bomb([1,3]).
+bomb([2,0]).
+bomb([2,1]).
+bomb([3,0]).
+bomb([3,1]).
+bomb([3,2]).
+bomb([4,0]).
+bomb([4,1]).
+bomb([4,2]).
+
+star([2,2]).
+star([3,3]).
+
+[Solution]
+Moves = [right, down, right, down, right, down, down],
+Stars = 2 ;
+
+
+
+
+*[Test Case-3]:
+dim(5, 5).
+start([3,0]).
+end([1,1]).
+
+bomb([0,0]).
+bomb([0,3]).
+bomb([1,2]).
+bomb([1,3]).
+bomb([1,4]).
+bomb([2,0]).
+bomb([2,3]).
+bomb([2,4]).
+bomb([3,1]).
+bomb([3,4]).
+bomb([4,4]).
+
+star([0,1]).
+star([0,2]).
+star([0,4]).
+star([1,0]).
+star([2,1]).
+star([2,2]).
+star([3,2]).
+star([3,3]).
+star([4,0]).
+star([4,1]).
+star([4,2]).
+star([4,3]).
+
+[Solution]
+Moves = [down, right, right, up, up, left, up],
+Stars = 6 
+Moves = [down, right, right, right, up, left, up, left, up],
+Stars = 8
+*/
