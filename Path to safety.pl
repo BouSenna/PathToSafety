@@ -25,6 +25,15 @@ preferable_move([X, Y]):-
  star([X, Y]).
 
 
+% Reverse a list
+reverse_list(L, R) :-  
+  reverse_list(L, R, []).
+reverse_list([], Temp, Temp) :-
+  !.
+reverse_list([H|T], R, Temp) :- 
+  reverse_list(T, R, [H|Temp]). 
+
+
 find_path(Position, Position, Path, Path, Stars, Stars).
 
 find_path([X,Y], End, Visited, Path, CurrentStars, Stars):-
@@ -38,4 +47,5 @@ find_path([X,Y], End, Visited, Path, CurrentStars, Stars):-
 path_to_safety(Moves, Stars):-
    start_Position(St),
    end_Position(End),
-   find_path(St, End, [St], Reversed_Moves, 0, Stars).
+   find_path(St, End, [St], Reversed_Moves, 0, Stars),
+   reverse_list(Reversed_Moves, Moves).
