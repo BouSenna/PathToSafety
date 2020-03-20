@@ -47,9 +47,10 @@ find_path([X,Y], End, L, W, Visited, Path, CurrentStars, Stars):-
                                      CurrentStars1 is CurrentStars),
    find_path(New_Position, End, L, W, [New_Position|Visited], Path, CurrentStars1, Stars).
 
+
 path_to_safety(Moves, Stars):-
-   start_Position(St),
-   end_Position(End),
+   start(St),
+   end(End),
    dim(L, W),
    Length is L - 1,
    Width is W - 1,
