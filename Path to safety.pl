@@ -17,3 +17,9 @@ move([X, Y], [X, New_Y]):-
 move([X, Y], [X, New_Y]):-
  Y \= 3,
  New_Y is Y + 1.
+
+prohibitable_move([X, Y]):-
+ bomb([X, Y]).
+
+preferable_move([X, Y]):-
+ star([X, Y]).
